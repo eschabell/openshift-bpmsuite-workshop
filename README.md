@@ -1,7 +1,7 @@
-Reveal.js JBoss BPM Suite Workshop on OpenShift 
+Red Hat JBoss BPM Suite Workshop on OpenShift 
 ===============================================
-This git repository helps you get up and running quickly with a PHP based
-reveal.js site to host the workshop on JBoss BPM Suite that gets you
+This git repository helps you get up and running quickly with a 
+Cloud hosted workshop on JBoss BPM Suite that gets you
 started building your very own employee rewards process.
 
 Enjoy!
