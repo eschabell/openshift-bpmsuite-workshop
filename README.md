@@ -1,7 +1,7 @@
 Red Hat JBoss BPM Suite Workshop
 ================================
 This git repository helps you get up and running quickly with a 
-Cloud hosted workshop on JBoss BPM Suite that gets you
+cloud hosted workshop on JBoss BPM Suite that gets you
 started building your very own employee rewards process.
 
 Enjoy!
