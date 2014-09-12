@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Red Hat JBoss BRMS - Building the Cool Store Business Rules Workshop</title>
+
+  <meta name="description" content="Online BRMS workshop.">
+  <meta name="author" content="Jaen Swart & Eric D. Schabell">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+    	var link = document.createElement('link');
+    	link.rel = 'stylesheet';
+    	link.type = 'text/css';
+    	link.href = 'css/print/pdf.css';
+    	document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
+
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h3>Lab 06 - Create Technical Rules (DRL)</h3>
+      </section>
+
+      <section>
+        <h2>Lab Goal</h2>
+        <h4>To create a technical rule (DRL) to total up the shopping cart items for Cool Store</h4>
+      </section>
+
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>Technical rules generally not created here:</li>
+          <ul>
+            <li>developer teams tend authors technical rules</li>
+            <li>they are then uploaded to the repository</li>
+            <li>they appear here in a free form editor</li>
+            <li>there is no syntax help in editor (caution...)</li>
+            <li>business users advised to stick with guided rule editors</li>
+            <li>for completeness we create one technical rule here...</li>
+          </ul>
+
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>First we will create a new rule:</li>
+          <ul>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> DRL FILE</code>
+            </li>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> DRL FILE</code>
+            </li>
+          </ul>
+          <div style="float: right">
+            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image49.png" />
+          </div>
+
+        </ul>
+      </section>
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>Presented with an empty free text editor for our rule (DRL)</li>
+          <li>add package name:</li>
+          <ul>
+            <li><code>package com.redhat.coolstore</code>
+            </li>
+          </ul>
+
+
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>Add basic rule outline, noting indentation:</li>
+          <ul>
+            <li><code>rule "Total Shopping Cart Items"</code>
+            </li>
+            <li><code>ruleflow-group "pricing-rules"</code>
+            </li>
+            <li><code>no-loop true</code>, <code>when</code>, <code>then</code>, <code>end</code>
+            </li>
+          </ul>
+
+          <div style="float: right">
+            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image50.png" />
+          </div>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>Now lets look at the core of this rule</li>
+          <li>The condition (WHEN):</li>
+          <ul>
+            <li><code>'There is a ShoppingCart'</code>
+            </li>
+            <li>assign a variable name to this ShoppingCart <code>'$sc'</code>
+            </li>
+            <li><code>'There is a ShoppingCartItem with field shoppingCart equal to $sc'</code>
+            </li>
+            <li>assign a variable name to this ShoppingCartItem <code>'$sci'</code>
+            </li>
+          </ul>
+          <li>Can use Fact Types in right column, just remove package names</li>
+
+          <div style="float: right">
+            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image51.png" />
+          </div>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>The action (THEN) has four parts</li>
+          <ul>
+            <li>Modify value of $sc field cartItemTotal using formula</li>
+            <li><code>'$sc.setCartItemTotal( $sc.getCartItemTotal() + ($sci.getPrice() * $sci.getQuantity()));'</code>
+            </li>
+            <li>Modify value of cartItemPromoSavings field using formula</li>
+            <li><code>'$sc.setCartItemPromoSavings($sc.getCartItemPromoSavings() + ($sci.getPromoSavings() * $sci.getQuantity()));'</code>
+            </li>
+            <li>update ShoppingCart: <code>'update( $sc );'</code>
+            </li>
+            <li>retract ShoppingCartItem: <code>'retract( $sci );'</code>
+            </li>
+          </ul>
+
+          <div style="float: right">
+            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image52.png" />
+          </div>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating rules (DRL)</h2>
+        <ul>
+          <li>Save the rule.</li>
+          <li>Ensure your package builds:</li>
+          <ul>
+            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code>
+            </li>
+            <li>(should see green pop-up 'Build Successful')</li>
+
+          </ul>
+        </ul>
+      </section>
+
+
+
+      <section>
+        <div align="center">
+          <img height="150" width="99%" src="https://raw.githubusercontent.com/eschabell/erics-images/master/references.jpg">
+        </div>
+        <ul>
+          <li>JBoss BRMS & BPM Suite Articles</li>
+          <ul>
+            <li><a href="http://schabell.org/search/label/BRMS">http://schabell.org/search/label/BRMS</a>
+            </li>
+            <li><a href="http://schabell.org/search/label/BPMS">http://schabell.org/search/label/BPMS</a>
+            </li>
+          </ul>
+          <li>JBoss BPM Suite Demos</li>
+          <ul>
+            <li><a href="http://www.schabell.org/2013/10/jboss-bpm-suite-rocking-the-mortgage-demo.html">Mortgage Demo</a>
+            </li>
+            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html">Generic Loan Demo</a>
+            </li>
+            <li><a href="http://www.schabell.org/2013/12/bpms-examining-migrated-customer-evaluation-demo.html">Customer Evaluation Demo</a>
+            </li>
+          </ul>
+          <li>JBoss bpmPaaS Demos</li>
+          <ul>
+            <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html">bpmPaaS Generic Loan Process in the Cloud</a>
+            </li>
+            <li><a href="https://openshift.redhat.com/app/console/application_type/quickstart!17804">bpmPaaS Mortgage Process in the Cloud</a>
+            </li>
+          </ul>
+        </ul>
+      </section>
+
+      <section>
+        <h3>JBoss BPM Suite Workshop</h3>
+        <ul>
+          <li><a href="lab07.html" target="_blank">Lab 07 - Create Guided Decision Table</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+
+  <script>
+    // Full list of configuration options available here:
+     // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+    	controls: true,
+    	progress: true,
+    	history: true,
+    	center: true,
+
+    	theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    	transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    	// Parallax scrolling
+    	// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    	// parallaxBackgroundSize: '2100px 900px',
+
+    	// Optional libraries used to extend on reveal.js
+    	dependencies: [{
+    		src: 'lib/js/classList.js',
+    		condition: function() {
+    			return !document.body.classList;
+    		}
+    	}, {
+    		src: 'plugin/markdown/marked.js',
+    		condition: function() {
+    			return !!document.querySelector('[data-markdown]');
+    		}
+    	}, {
+    		src: 'plugin/markdown/markdown.js',
+    		condition: function() {
+    			return !!document.querySelector('[data-markdown]');
+    		}
+    	}, {
+    		src: 'plugin/highlight/highlight.js',
+    		async: true,
+    		callback: function() {
+    			hljs.initHighlightingOnLoad();
+    		}
+    	}, {
+    		src: 'plugin/zoom-js/zoom.js',
+    		async: true,
+    		condition: function() {
+    			return !!document.body.classList;
+    		}
+    	}, {
+    		src: 'plugin/notes/notes.js',
+    		async: true,
+    		condition: function() {
+    			return !!document.body.classList;
+    		}
+    	}]
+    });
+  </script>
+
+</body>
+
+</html>

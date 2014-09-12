@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Red Hat JBoss BRMS - Building the Cool Store Business Rules Workshop</title>
+
+  <meta name="description" content="Online BRMS workshop.">
+  <meta name="author" content="Jaen Swart & Eric D. Schabell">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+    	var link = document.createElement('link');
+    	link.rel = 'stylesheet';
+    	link.type = 'text/css';
+    	link.href = 'css/print/pdf.css';
+    	document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
+
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h3>Lab 08 - Create Rule Flow</h3>
+      </section>
+
+      <section>
+        <h2>Lab Goal</h2>
+        <h4>To create a rule flow process for each time item added to shopping cart for Cool Store</h4>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>We will create a business process</li>
+          <ul>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> BUSINESS PROCESS</code>
+            </li>
+            <li><code>RESOURCE NAME: PriceProcess</code>
+            </li>
+
+          </ul>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image69.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>The process designer has a single start node</li>
+          <li>we are going to design a 5 step process applying rules:</li>
+          <ul>
+            <li><code>Start</code>
+            </li>
+            <li><code>Apply Cart Promotion</code>
+            </li>
+            <li><code>Total Shopping Cart Items</code>
+            </li>
+            <li><code>Calculate Shipping</code>
+            </li>
+            <li><code>Apply Shipping Promotions</code>
+            </li>
+            <li><code>Total Shopping Cart</code>
+            </li>
+            <li><code>End</code>
+            </li>
+
+          </ul>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>You can use Object Library to drag-and-drop tasks</li>
+          <li>Easier to click a node and use mini-icons</li>
+          <ul>
+            <li>click on the start node</li>
+            <li>click on mini-icon of task right of selected node</li>
+            <li>automatically adds a transition and a task node</li>
+            <li>repeat for 5 task nodes</li>
+            <li>then click on mini-icon of end node (circle)</li>
+
+          </ul>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image70.png" />
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image71.png" />
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image72.png" />
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image73.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>Finishing configuration of the node as a business rule task:</li>
+          <ul>
+            <li>task node now has 'rule' icon marking it in top left corner</li>
+            <li>repeat for 5 task nodes</li>
+          </ul>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image75.png" />
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image76.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>Now we need to name each business rule task:</li>
+          <ul>
+            <li>close the left pane, open the right 'Properties' pane</li>
+            <li>double click on the first business rule task</li>
+            <li>pop-up text box to fill in name: <code>'Apply Cart Promotions'</code>
+            </li>
+          </ul>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image77.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>On enter it appears in node, and in Properties panel 'Name' field</li>
+
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image78.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>Now finish naming the rest of the business rule tasks:</li>
+          <ul>
+            <li><code>Total Shopping Cart Items</code>
+            </li>
+            <li><code>Calculate Shipping</code>
+            </li>
+            <li><code>Apply Shipping Promotions</code>
+            </li>
+            <li><code>Total Shopping Cart</code>
+            </li>
+          </ul>
+          <li>Note: to adjust the size view, buttons upper right in process designer</li>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image79.png" />
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image80.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>At this point we need to associate a rule set with each task</li>
+          <li>This is done by assigning a 'Ruleflow Group'</li>
+          <ul>
+            <li>click on business rule task 'Apply Cart Promotions'</li>
+            <li>in right pane add `'promo-cart-rules`' to 'Ruleflow Group' field</li>
+            <li>hit enter to finalize the field</li>
+          </ul>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image81.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>Set the following business rule tasks 'Ruleflow Group' fields:</li>
+          <ul>
+            <li>Total Shopping Cart Items == <code>'pricing-rules'</code>
+            </li>
+            <li>Calculate Shipping == <code>'shipping-rules'</code>
+            </li>
+            <li>Apply Shipping Promotions == <code>'promo-rules'</code>
+            </li>
+            <li>Total Shopping Cart == <code>'total-rules'</code>
+            </li>
+          </ul>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>The final task is to make process business presentable</li>
+          <li>A unique feature is the color coding of your process</li>
+          <ul>
+            <li>Green is our business rule task color</li>
+            <li>select a business rule task</li>
+            <li>open right 'Properties' pane</li>
+            <li>in 'Graphical Settings' set 'Background Color' to green</li>
+          </ul>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image82.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>Color the rest of the business rule tasks</li>
+        </ul>
+        <div style="float: right">
+          <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image83.png" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Creating our Rule Flow</h2>
+        <ul>
+          <li>Save the rule</li>
+          <li>Ensure your package builds:</li>
+          <ul>
+            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code>
+            </li>
+            <li><code>(should see green pop-up 'Build Successful')</code>
+            </li>
+          </ul>
+        </ul>
+      </section>
+
+      <section>
+        <div align="center">
+          <img height="150" width="99%" src="https://raw.githubusercontent.com/eschabell/erics-images/master/references.jpg">
+        </div>
+        <ul>
+          <li>JBoss BRMS & BPM Suite Articles</li>
+          <ul>
+            <li><a href="http://schabell.org/search/label/BRMS">http://schabell.org/search/label/BRMS</a>
+            </li>
+            <li><a href="http://schabell.org/search/label/BPMS">http://schabell.org/search/label/BPMS</a>
+            </li>
+          </ul>
+          <li>JBoss BPM Suite Demos</li>
+          <ul>
+            <li><a href="http://www.schabell.org/2013/10/jboss-bpm-suite-rocking-the-mortgage-demo.html">Mortgage Demo</a>
+            </li>
+            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html">Generic Loan Demo</a>
+            </li>
+            <li><a href="http://www.schabell.org/2013/12/bpms-examining-migrated-customer-evaluation-demo.html">Customer Evaluation Demo</a>
+            </li>
+          </ul>
+          <li>JBoss bpmPaaS Demos</li>
+          <ul>
+            <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html">bpmPaaS Generic Loan Process in the Cloud</a>
+            </li>
+            <li><a href="https://openshift.redhat.com/app/console/application_type/quickstart!17804">bpmPaaS Mortgage Process in the Cloud</a>
+            </li>
+          </ul>
+        </ul>
+      </section>
+
+      <section>
+        <h3>JBoss BRMS Workshop</h3>
+        <ul>
+          <li><a href="lab09.html" target="_blank">Lab 09 - Create Test Scenarios</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+
+  <script>
+    // Full list of configuration options available here:
+     // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+    	controls: true,
+    	progress: true,
+    	history: true,
+    	center: true,
+
+    	theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    	transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    	// Parallax scrolling
+    	// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    	// parallaxBackgroundSize: '2100px 900px',
+
+    	// Optional libraries used to extend on reveal.js
+    	dependencies: [{
+    		src: 'lib/js/classList.js',
+    		condition: function() {
+    			return !document.body.classList;
+    		}
+    	}, {
+    		src: 'plugin/markdown/marked.js',
+    		condition: function() {
+    			return !!document.querySelector('[data-markdown]');
+    		}
+    	}, {
+    		src: 'plugin/markdown/markdown.js',
+    		condition: function() {
+    			return !!document.querySelector('[data-markdown]');
+    		}
+    	}, {
+    		src: 'plugin/highlight/highlight.js',
+    		async: true,
+    		callback: function() {
+    			hljs.initHighlightingOnLoad();
+    		}
+    	}, {
+    		src: 'plugin/zoom-js/zoom.js',
+    		async: true,
+    		condition: function() {
+    			return !!document.body.classList;
+    		}
+    	}, {
+    		src: 'plugin/notes/notes.js',
+    		async: true,
+    		condition: function() {
+    			return !!document.body.classList;
+    		}
+    	}]
+    });
+  </script>
+
+</body>
+
+</html>
