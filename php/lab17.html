@@ -63,12 +63,87 @@
                 </section>
 
                 <section>
-                    <h2>Running rewards process</h2>
+                    <h2>Intermezzo</h2>
                     <ul>
-                        <li>Let's start by building and deploying our rewards project.</li>
+                        <li>We have e-mail task, but no SMTP server?</li>
+                        <li>Let's use custom WorkItemHandler to log instead of mail:</li>
                         <li><code>Project Authoring -> Tools -> Project Editor</code></li>
                         <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image284.png">
-                        <li>click on  <i>Build & Deploy</i> button in top right corner</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Intermezzo</h2>
+                    <ul>
+                        <li>We need to get a specific KnowledgeBase setup</li>
+                        <li><code>Project Settings -> Knowledge bases and sessions</code></li>
+                        <div align="right">
+                            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image310.png">
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Intermezzo</h2>
+                    <ul>
+                        <li><code>Add -> 'rewards' in pop-up -> OK</code></li>
+                        <div align="right">
+                            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image311.png">
+                        </div>
+                        <li>Select 'rewards' KnowledgeBase and make it default.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Intermezzo</h2>
+                    <ul>
+                        <li>Add a specific KnowledgeSession</li>
+                        <li><code>Add -> 'rewardsSession' in pop-up</code></li>
+                        <li><code>check 'Default' box</code></li>
+                        <li><code>State: 'Stateful'</code></li>
+                        <li><code>Clock: 'Realtime'</code></li>
+                        <div align="right">
+                            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image312.png">
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Intermezzo</h2>
+                    <ul>
+                        <li>Finally, add EMAIL Work Item Handler.</li>
+                        <li><code>click on 'rewardsSession' entry pencil mini-icon to edit session</code></li>
+                        <li><code>click ADD</code></li>
+                        <li><code>Name: 'Email'</code></li>
+                        <li><code>Type:</code><code style="font-size: large">new org.jbpm.process.instance.impl.demo.SystemOutWorkItemHandler()</code></li>
+                        <li>Close pop-up and save Project Editor</li>
+                        <div align="right">
+                            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image313.png">
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Intermezzo</h2>
+                    <ul>
+                        <li>Now when we run our project, the email task will not fail.</li>
+                        <li>Instead of using SMTP server, we write to server log.</li>
+                        <li>This is an example of overriding a default work item handler with a custom implementation.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Running rewards process</h2>
+                    <ul>
+                        <li>Are you ready to build and deploy our rewards project?</li>
+                        <li><code>Project Authoring -> Tools -> Project Editor</code></li>
+                        <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image284.png">
+                </section>
+
+                <section>
+                    <h2>Running rewards process</h2>
+                    <ul>
+                        <li>click on <i>Build & Deploy</i> button in top right corner</li>
                     </ul>
                     <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image285.png">
                 </section>
