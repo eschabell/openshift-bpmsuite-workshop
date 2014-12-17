@@ -7,7 +7,7 @@ started building your very own employee rewards process.
 Run now on OpenShift
 --------------------
 
-[![Run now on OpenShift](http://launch-shifter.rhcloud.com/launch/light/LAUNCH
+[![LAUNCH ON OpenShift](http://launch-shifter.rhcloud.com/launch/light/LAUNCH
 ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=php-5.4&initial_git_url=https://github.com/eschabell/openshift-bpmsuite-workshop.git&name=bpmworkshop)
 
 
