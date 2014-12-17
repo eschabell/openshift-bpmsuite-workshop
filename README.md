@@ -4,7 +4,8 @@ This git repository helps you get up and running quickly with a
 cloud hosted workshop on JBoss BPM Suite that gets you
 started building your very own employee rewards process.
 
-Enjoy!
+[![LAUNCH ON OpenShift](http://launch-shifter.rhcloud.com/launch/light/LAUNCH
+ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=php-5.4&initial_git_url=https://github.com/eschabell/openshift-bpmsuite-workshop.git&name=launch)
 
 Running on OpenShift
 --------------------
