@@ -6,8 +6,7 @@ started building your very own employee rewards process.
 
 Install with one click
 ----------------------
-[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Click to
-install.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=php-5.4&initial_git_url=https://github.com/eschabell/openshift-bpmsuite-workshop.git&name=bpmworkshop)
+[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Click to  install.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=php-5.4&initial_git_url=https://github.com/eschabell/openshift-bpmsuite-workshop.git&name=bpmworkshop)
 
 Manual setup on OpenShift
 -------------------------
