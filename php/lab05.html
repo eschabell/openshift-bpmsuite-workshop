@@ -62,14 +62,10 @@
         <ul>
           <li>First we will create a new guided rule:</li>
           <ul>
-            <li><code>Total Shopping Cart</code>
-            </li>
-            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code>
-            </li>
-            <li><code>RESOURCE NAME: Total Shopping Cart</code>
-            </li>
-            <li><code>(don't check the DSL box this time)</code>
-            </li>
+            <li><code>Total Shopping Cart</code></li>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code></li>
+            <li><code>RESOURCE NAME: Total Shopping Cart</code></li>
+            <li><code>(don't check the DSL box this time)</code></li>
           </ul>
 
         </ul>
@@ -80,10 +76,8 @@
         <ul>
           <li>Start by importing model object <code>ShoppingCart</code> for this rule:</li>
           <ul>
-            <li><code>CONFIG tab on the bottom of rule</code>
-            </li>
-            <li><code>NEW ITEM button at top, select ShoppingCart from Import list</code>
-            </li>
+            <li><code>CONFIG tab on the bottom of rule</code></li>
+            <li><code>NEW ITEM button at top, select ShoppingCart from Import list</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image168.png" />
@@ -98,10 +92,8 @@
           <li>Now return to the <code>Edit</code> tab an start designing our rule</li>
           <li>The condition (WHEN):</li>
           <ul>
-            <li><code>'There is a ShoppingCart'</code>
-            </li>
-            <li>assign a variable name to this ShoppingCart <code>'$sc'</code>
-            </li>
+            <li><code>'There is a ShoppingCart'</code></li>
+            <li>assign a variable name to this ShoppingCart <code>'$sc'</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image41.png" />
@@ -132,10 +124,8 @@
         <ul>
           <li>Expand the 'show options' and add:</li>
           <ul>
-            <li><code>check NO-LOOP box</code>
-            </li>
-            <li><code>RULEFLOW-GROUP: total-rules</code>
-            </li>
+            <li><code>check NO-LOOP box</code></li>
+            <li><code>RULEFLOW-GROUP: total-rules</code></li>
             <ul>
               <li>`($sc.cartItemPromoSavings == 0.0) ? 0.0 : $sc.cartItemPromoSavings * -1`</li>
             </ul>
@@ -143,11 +133,8 @@
           <li>Save the rule</li>
           <li>Ensure your package builds:</li>
           <ul>
-            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code>
-            </li>
-            <li><code>(should see green pop-up 'Build Successful')</code>
-            </li>
-
+            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code></li>
+            <li><code>(should see green pop-up 'Build Successful')</code></li>
             <div style="float: right">
               <img src="images/brms_bpms_workshop/image43.png" />
             </div>
@@ -159,15 +146,10 @@
         <ul>
           <li>Now the final guided rule will be created on your own:</li>
           <ul>
-            <li><code>Apply Cart Item Promotions</code>
-            </li>
-            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code>
-            </li>
-            <li><code>RESOURCE NAME: Apply Cart Item Promotions</code>
-            </li>
-            <li><code>don't check the DSL box this time</code>
-            </li>
-
+            <li><code>Apply Cart Item Promotions</code></li>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code></li>
+            <li><code>RESOURCE NAME: Apply Cart Item Promotions</code></li>
+            <li><code>don't check the DSL box this time</code></li>
           </ul>
         </ul>
       </section>
@@ -178,8 +160,7 @@
           <li>The condition (WHEN) is two fold</li>
           <ul>
             <li>Part I is about a ShoppingCartItem</li>
-            <li>Part II is about a PromoEvent that monitors an event stream <code>'Promo Stream'</code>
-            </li>
+            <li>Part II is about a PromoEvent that monitors an event stream <code>'Promo Stream'</code></li>
           </ul>
           <li>The action (THEN) will modify two ShoppingCart fields</li>
           <ul>
@@ -194,14 +175,10 @@
         <ul>
           <li>The condition Part I:</li>
           <ul>
-            <li><code>'There is a ShoppingCartItem'</code>
-            </li>
-            <li>assign a variable name to this ShoppingCart <code>'$sci'</code>
-            </li>
-            <li><code>'with itemId'</code>
-            </li>
-            <li>assign a variable name to this itemID <code>'$itemId'</code>
-            </li>
+            <li><code>'There is a ShoppingCartItem'</code></li>
+            <li>assign a variable name to this ShoppingCart <code>'$sci'</code></li>
+            <li><code>'with itemId'</code></li>
+            <li>assign a variable name to this itemID <code>'$itemId'</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image44.png" />
@@ -215,12 +192,9 @@
           <li>The condition Part IIa</li>
           <ul>
             <li>top green <code>+</code> sign adds second condition</li>
-            <li>start with from Entry Point and fill in: <code>'Promo Stream'</code>
-            </li>
-            <li>within condition use <code>click to add patterns</code>
-            </li>
-            <li>add <code>PromoEvent</code>, results in <code>'There is a PromoEvent'</code>
-            </li>
+            <li>start with from Entry Point and fill in: <code>'Promo Stream'</code></li>
+            <li>within condition use <code>click to add patterns</code></li>
+            <li>add <code>PromoEvent</code>, results in <code>'There is a PromoEvent'</code></li>
           </ul>
           <div align="center">
             <img src="images/brms_bpms_workshop/image172.png" />
@@ -237,11 +211,8 @@
             <li>clicking on `PromoEvent` gives a pop-up</li>
             <li>select entry</li>
             <ul>
-              <li><code>All of (And)</code>
-              </li>
-              <li>results in <code>'with all of the following'</code>
-              </li>
-
+              <li><code>All of (And)</code></li>
+              <li>results in <code>'with all of the following'</code></li>
             </ul>
           </ul>
           <div style="float: right">
@@ -257,14 +228,9 @@
           <li>The condition Part IIc</li>
           <ul>
             <li>click on <code>all of the following"</code> line to add:</li>
-            <li>an itemId equal to the ShoppingCartItem <code>'$itemId'</code>
-            </li>
-            <li>a percentageOff assigned variable <code>'$pctOff'</code>
-            </li>
-            <li>percentageOff is over sliding window: <code>'none'</code>
-            </li>
-
-
+            <li>an itemId equal to the ShoppingCartItem <code>'$itemId'</code></li>
+            <li>a percentageOff assigned variable <code>'$pctOff'</code></li>
+            <li>percentageOff is over sliding window: <code>'none'</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image45.png" />
@@ -276,16 +242,10 @@
         <h2>Creating guided rules</h2>
         <ul>
           <li>The action part of our rule is next:</li>
-          <li><code>'Modify value of ShoppingCartItem ($sci)'</code>
-          </li>
-          <li><code>'promoSavings is set to 0.0'</code>
-          </li>
-          <li><code>'Modify value of ShoppingCartItem ($sci)'</code>
-          </li>
-          <li><code>'price is set to 0.0'</code>
-          </li>
-
-
+          <li><code>'Modify value of ShoppingCartItem ($sci)'</code></li>
+          <li><code>'promoSavings is set to 0.0'</code></li>
+          <li><code>'Modify value of ShoppingCartItem ($sci)'</code></li>
+          <li><code>'price is set to 0.0'</code></li>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image46.png" />
           </div>
@@ -297,18 +257,14 @@
         <ul>
           <li>Expand the 'show options' and add:</li>
           <ul>
-            <li><code>check NO-LOOP box</code>
-            </li>
-            <li><code>RULEFLOW-GROUP: promo-cart-rules</code>
-            </li>
+            <li><code>check NO-LOOP box</code></li>
+            <li><code>RULEFLOW-GROUP: promo-cart-rules</code></li>
           </ul>
           <li>Save the rule.</li>
           <li>Ensure your package builds:</li>
           <ul>
-            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code>
-            </li>
-            <li><code>(should see green pop-up 'Build Successful')</code>
-            </li>
+            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code></li>
+            <li><code>(should see green pop-up 'Build Successful')</code></li>
           </ul>
 
 
@@ -322,36 +278,29 @@
             <img src="images/brms_bpms_workshop/image48.png">
         </section>
 
-      <section>
-        <div align="center">
-          <img height="150" width="99%" src="images/references.jpg">
-        </div>
-        <ul>
-          <li>JBoss BRMS & BPM Suite Articles</li>
-          <ul>
-            <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a>
-            </li>
-            <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a>
-            </li>
-          </ul>
-          <li>JBoss BPM Suite Demos</li>
-          <ul>
-            <li><a href="http://www.schabell.org/2013/10/jboss-bpm-suite-rocking-the-mortgage-demo.html" style="color: red" target="_blank">Mortgage Demo</a>
-            </li>
-            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a>
-            </li>
-            <li><a href="http://www.schabell.org/2013/12/bpms-examining-migrated-customer-evaluation-demo.html" style="color: red" target="_blank">Customer Evaluation Demo</a>
-            </li>
-          </ul>
-          <li>JBoss bpmPaaS Demos</li>
-          <ul>
-            <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a>
-            </li>
-            <li><a href="https://openshift.redhat.com/app/console/application_type/quickstart!17804" style="color: red" target="_blank">bpmPaaS Mortgage Process in the Cloud</a>
-            </li>
-          </ul>
-        </ul>
-      </section>
+        <section>
+            <div align="center">
+                <img height="150" width="99%" src="images/references.jpg">
+            </div>
+            <ul>
+                <li>JBoss BRMS & BPM Suite Articles</li>
+                <ul>
+                    <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
+                    <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
+                </ul>
+                <li>JBoss BPM Suite Demos</li>
+                <ul>
+                    <li><a href="http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html" style="color: red" target="_blank">Travel Agency Demo</a></li>
+                    <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a></li>
+                    <li><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-helping-travelers-with-lost-bags.html" style="color: red" target="_blank">Baggage Delivery Demo</a></li>
+                </ul>
+                <li>JBoss bpmPaaS Demos</li>
+                <ul>
+                    <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a></li>
+                    <li><a href="http://www.schabell.org/2015/02/into-clouds-with-jboss-bpm-travel-agency.html" style="color: red" target="_blank">bpmPaaS Travel Agency in the Cloud</a></li>
+                </ul>
+            </ul>
+        </section>
 
       <section>
         <h2>JBoss BRMS Workshop</h2>

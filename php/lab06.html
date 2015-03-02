@@ -52,7 +52,7 @@
               <h4>To create a technical rule (DRL) to total up the shopping cart items for Cool Store</h4>
           </div>
           <div style="width: 1056px; height: 600px;">
-              <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/brms-component-ruleauthoring.png">
+              <img src="images/brms_bpms_workshop/brms-component-ruleauthoring.png">
           </div>
       </section>
 
@@ -77,13 +77,11 @@
         <ul>
           <li>First we will create a new rule:</li>
           <ul>
-            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> DRL FILE</code>
-            </li>
-            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> DRL FILE</code>
-            </li>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> DRL FILE</code></li>
+            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> DRL FILE</code></li>
           </ul>
           <div style="float: right">
-            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image49.png" />
+            <img src="images/brms_bpms_workshop/image49.png" />
           </div>
 
         </ul>
@@ -107,16 +105,13 @@
         <ul>
           <li>Add basic rule outline, noting indentation:</li>
           <ul>
-            <li><code>rule "Total Shopping Cart Items"</code>
-            </li>
-            <li><code>ruleflow-group "pricing-rules"</code>
-            </li>
-            <li><code>no-loop true</code>, <code>when</code>, <code>then</code>, <code>end</code>
-            </li>
+            <li><code>rule "Total Shopping Cart Items"</code></li>
+            <li><code>ruleflow-group "pricing-rules"</code></li>
+            <li><code>no-loop true</code>, <code>when</code>, <code>then</code>, <code>end</code></li>
           </ul>
 
           <div style="float: right">
-            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image50.png" />
+            <img src="images/brms_bpms_workshop/image50.png" />
           </div>
         </ul>
       </section>
@@ -127,19 +122,15 @@
           <li>Now lets look at the core of this rule</li>
           <li>The condition (WHEN):</li>
           <ul>
-            <li><code>'There is a ShoppingCart'</code>
-            </li>
-            <li>assign a variable name to this ShoppingCart <code>'$sc'</code>
-            </li>
-            <li><code>'There is a ShoppingCartItem with field shoppingCart equal to $sc'</code>
-            </li>
-            <li>assign a variable name to this ShoppingCartItem <code>'$sci'</code>
-            </li>
+            <li><code>'There is a ShoppingCart'</code></li>
+            <li>assign a variable name to this ShoppingCart <code>'$sc'</code></li>
+            <li><code>'There is a ShoppingCartItem with field shoppingCart equal to $sc'</code></li>
+            <li>assign a variable name to this ShoppingCartItem <code>'$sci'</code></li>
           </ul>
           <li>Can use Fact Types in right column, just remove package names</li>
 
           <div style="float: right">
-            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image51.png" />
+            <img src="images/brms_bpms_workshop/image51.png" />
           </div>
         </ul>
       </section>
@@ -150,19 +141,15 @@
           <li>The action (THEN) has four parts</li>
           <ul>
             <li>Modify value of $sc field cartItemTotal using formula</li>
-            <li><code>'$sc.setCartItemTotal( $sc.getCartItemTotal() + ($sci.getPrice() * $sci.getQuantity()));'</code>
-            </li>
+            <li><code>'$sc.setCartItemTotal( $sc.getCartItemTotal() + ($sci.getPrice() * $sci.getQuantity()));'</code></li>
             <li>Modify value of cartItemPromoSavings field using formula</li>
-            <li><code>'$sc.setCartItemPromoSavings($sc.getCartItemPromoSavings() + ($sci.getPromoSavings() * $sci.getQuantity()));'</code>
-            </li>
-            <li>update ShoppingCart: <code>'update( $sc );'</code>
-            </li>
-            <li>retract ShoppingCartItem: <code>'retract( $sci );'</code>
-            </li>
+            <li><code>'$sc.setCartItemPromoSavings($sc.getCartItemPromoSavings() + ($sci.getPromoSavings() * $sci.getQuantity()));'</code></li>
+            <li>update ShoppingCart: <code>'update( $sc );'</code></li>
+            <li>retract ShoppingCartItem: <code>'retract( $sci );'</code></li>
           </ul>
 
           <div style="float: right">
-            <img src="https://raw.githubusercontent.com/eschabell/erics-images/master/brms_bpms_workshop/image52.png" />
+            <img src="images/brms_bpms_workshop/image52.png" />
           </div>
         </ul>
       </section>
@@ -173,53 +160,45 @@
           <li>Save the rule.</li>
           <li>Ensure your package builds:</li>
           <ul>
-            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code>
-            </li>
+            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code></li>
             <li>(should see green pop-up 'Build Successful')</li>
 
           </ul>
         </ul>
       </section>
 
+        <section>
+            <img src="images/brms_bpms_workshop/image53.png">
+        </section>
 
-
-      <section>
-        <div align="center">
-          <img height="150" width="99%" src="https://raw.githubusercontent.com/eschabell/erics-images/master/references.jpg">
-        </div>
-        <ul>
-          <li>JBoss BRMS & BPM Suite Articles</li>
-          <ul>
-            <li><a href="http://schabell.org/search/label/BRMS">http://schabell.org/search/label/BRMS</a>
-            </li>
-            <li><a href="http://schabell.org/search/label/BPMS">http://schabell.org/search/label/BPMS</a>
-            </li>
-          </ul>
-          <li>JBoss BPM Suite Demos</li>
-          <ul>
-            <li><a href="http://www.schabell.org/2013/10/jboss-bpm-suite-rocking-the-mortgage-demo.html">Mortgage Demo</a>
-            </li>
-            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html">Generic Loan Demo</a>
-            </li>
-            <li><a href="http://www.schabell.org/2013/12/bpms-examining-migrated-customer-evaluation-demo.html">Customer Evaluation Demo</a>
-            </li>
-          </ul>
-          <li>JBoss bpmPaaS Demos</li>
-          <ul>
-            <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html">bpmPaaS Generic Loan Process in the Cloud</a>
-            </li>
-            <li><a href="https://openshift.redhat.com/app/console/application_type/quickstart!17804">bpmPaaS Mortgage Process in the Cloud</a>
-            </li>
-          </ul>
-        </ul>
-      </section>
+        <section>
+            <div align="center">
+                <img height="150" width="99%" src="images/references.jpg">
+            </div>
+            <ul>
+                <li>JBoss BRMS & BPM Suite Articles</li>
+                <ul>
+                    <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
+                    <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
+                </ul>
+                <li>JBoss BPM Suite Demos</li>
+                <ul>
+                    <li><a href="http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html" style="color: red" target="_blank">Travel Agency Demo</a></li>
+                    <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a></li>
+                    <li><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-helping-travelers-with-lost-bags.html" style="color: red" target="_blank">Baggage Delivery Demo</a></li>
+                </ul>
+                <li>JBoss bpmPaaS Demos</li>
+                <ul>
+                    <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a></li>
+                    <li><a href="http://www.schabell.org/2015/02/into-clouds-with-jboss-bpm-travel-agency.html" style="color: red" target="_blank">bpmPaaS Travel Agency in the Cloud</a></li>
+                </ul>
+            </ul>
+        </section>
 
       <section>
-        <h3>JBoss BPM Suite Workshop</h3>
-        <ul>
-          <li><a href="lab07.html" target="_blank">Lab 07 - Create Guided Decision Table</a>
-          </li>
-        </ul>
+          <h2>JBoss BPM Suite Workshop</h2>
+          <h3><a href="lab07.html" style="color: red" target="_blank">Lab 07</a></h3>
+          <h3><a href="lab07.html" style="color: red" target="_blank">Create Guided Decision Table</a></h3>
       </section>
     </div>
   </div>

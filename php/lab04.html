@@ -75,9 +75,7 @@
           </li>
           <li>Create a DSL that allows business to determine threshold for free shipping:</li>
           <ul>
-            <li><code>If customer spends X amount, then apply free shipping</code>
-            </li>
-
+            <li><code>If customer spends X amount, then apply free shipping</code></li>
           </ul>
           <li>Go on to next slide to see how we design our DSL</li>
         </ul>
@@ -88,15 +86,12 @@
         <ul>
           <li>Head over to the project authoring perspective</li>
           <ul>
-            <li><code>AUTHORING -> PROJECT AUTHORING()</code>
-            </li>
+            <li><code>AUTHORING -> PROJECT AUTHORING()</code></li>
             <div style="float: right">
               <img src="images/brms_bpms_workshop/image13.png" />
-
             </div>
           </ul>
         </ul>
-
       </section>
 
       <section>
@@ -104,20 +99,16 @@
         <ul>
           <li>Create our new DSL:</li>
           <ul>
-            <li><code>New Item -> DSL DEFINITION</code>
-            </li>
-            <li><code>RESOURCE NAME: Promotions DSL</code>
-            </li>
-            <li><code>OK</code>
-            </li>
+            <li><code>New Item -> DSL DEFINITION</code></li>
+            <li><code>RESOURCE NAME: Promotions DSL</code></li>
+            <li><code>OK</code></li>
             <div style="float: right">
               <img src="images/brms_bpms_workshop/image33.png" />
-
             </div>
           </ul>
         </ul>
-
       </section>
+
       <section>
         <h2>Create a new DSL</h2>
         <ul>
@@ -125,31 +116,23 @@
           <li>It is a definition divided into a WHEN and THEN section</li>
           <ul>
             <li><code>WHEN</code> - here we decide what has to happen</li>
-            <li><code>If customer spends X</code>
-            </li>
+            <li><code>If customer spends X</code></li>
             <li><code>THEN</code> - this is the results applied if WHEN happens</li>
             <li><code>apply free shipping</code>, which is a formula we supply</li>
-
           </ul>
           <li><code>SAVE</code>, your DSL when finished</li>
         </ul>
         <div style="float: right">
           <img src="images/brms_bpms_workshop/image34.png" />
-
         </div>
-
       </section>
+
       <section>
         <h2>If you want to skip the typing, paste this instead:</h2>
         <ul>
-          <li><code>[when]If customer spends ${var}=$sc : ShoppingCart( cartItemTotal >= {var} )</code>
-          </li>
-          <li><code>[then]Apply Free Shipping=$sc.setShippingPromoSavings( $sc.shippingTotal * -1 ); $sc.setShippingTotal( 0 ); update ($sc);</code>
-          </li>
-
+          <li><code>[when]If customer spends ${var}=$sc : ShoppingCart( cartItemTotal >= {var} )</code></li>
+          <li><code>[then]Apply Free Shipping=$sc.setShippingPromoSavings( $sc.shippingTotal * -1 ); $sc.setShippingTotal( 0 ); update ($sc);</code></li>
       </section>
-
-
 
       <section>
         <h2>Create a new Guided Rule with DSL</h2>
@@ -157,15 +140,10 @@
           <li>We next will create a rule using the DSL we created</li>
           <li>Create a new guided rule</li>
           <ul>
-            <li><code>NEW ITEM -> GUIDED RULE</code>
-            </li>
-            <li><code>RESOURCE NAME: Free Shipping Promotion DSL</code>
-            </li>
-            <li><code>CHECK 'Use Domain Specific Language (DSL)' BOX</code>
-            </li>
-            <li><code>OK</code>
-            </li>
-
+            <li><code>NEW ITEM -> GUIDED RULE</code></li>
+            <li><code>RESOURCE NAME: Free Shipping Promotion DSL</code></li>
+            <li><code>CHECK 'Use Domain Specific Language (DSL)' BOX</code></li>
+            <li><code>OK</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image35.png" />
@@ -194,8 +172,7 @@
         <ul>
           <li>Now let us create our condition (WHEN):</li>
           <ul>
-            <li><code>If customer spends $75</code>
-            </li>
+            <li><code>If customer spends $75</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image37.png" />
@@ -213,8 +190,7 @@
           <li>next we need to add an action (THEN)</li>
           <ul>
             <li>use the <code>+</code> at the THEN level of the designer to add:</li>
-            <li><code>Apply Free Shipping</code>
-            </li>
+            <li><code>Apply Free Shipping</code></li>
           </ul>
           <div style="float: right">
             <img src="images/brms_bpms_workshop/image38.png" />
@@ -227,10 +203,8 @@
         <ul>
           <li>Expand the 'show options<code>SAVE</code> and add:</li>
           <ul>
-            <li><code>check NO-LOOP box</code>
-            </li>
-            <li><code>RULEFLOW-GROUP: promo-rules</code>
-            </li>
+            <li><code>check NO-LOOP box</code></li>
+            <li><code>RULEFLOW-GROUP: promo-rules</code></li>
           </ul>
           <li>Save the rule</li>
         </ul>
@@ -241,10 +215,8 @@
         <ul>
           <li>Ensure your package builds:</li>
           <ul>
-            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code>
-            </li>
-            <li><code>(should see green pop-up 'Build Successful')</code>
-            </li>
+            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code></li>
+            <li><code>(should see green pop-up 'Build Successful')</code></li>
           </ul>
           <li>if ERRORS around ShoppingCart, see next slide</li>
           <div style="float: right">
@@ -258,10 +230,8 @@
         <ul>
           <li>Errors could be due to ShoppingCart not on rule path, to add:</li>
           <ul>
-            <li><code>CONFIG tab on the bottom of rule</code>
-            </li>
-            <li><code>+NEW ITEM button at top, select ShoppingCart from Import list</code>
-            </li>
+            <li><code>CONFIG tab on the bottom of rule</code></li>
+            <li><code>+NEW ITEM button at top, select ShoppingCart from Import list</code></li>
           </ul>
           <li>Save rule, build project, should see green pop-up <code>Build Successful</code>
           </li>
@@ -284,26 +254,19 @@
             <ul>
                 <li>JBoss BRMS & BPM Suite Articles</li>
                 <ul>
-                    <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a>
-                    </li>
-                    <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a>
-                    </li>
+                    <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
+                    <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
                 </ul>
                 <li>JBoss BPM Suite Demos</li>
                 <ul>
-                    <li><a href="http://www.schabell.org/2013/10/jboss-bpm-suite-rocking-the-mortgage-demo.html" style="color: red" target="_blank">Mortgage Demo</a>
-                    </li>
-                    <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a>
-                    </li>
-                    <li><a href="http://www.schabell.org/2013/12/bpms-examining-migrated-customer-evaluation-demo.html" style="color: red" target="_blank">Customer Evaluation Demo</a>
-                    </li>
+                    <li><a href="http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html" style="color: red" target="_blank">Travel Agency Demo</a></li>
+                    <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a></li>
+                    <li><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-helping-travelers-with-lost-bags.html" style="color: red" target="_blank">Baggage Delivery Demo</a></li>
                 </ul>
                 <li>JBoss bpmPaaS Demos</li>
                 <ul>
-                    <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a>
-                    </li>
-                    <li><a href="https://openshift.redhat.com/app/console/application_type/quickstart!17804" style="color: red" target="_blank">bpmPaaS Mortgage Process in the Cloud</a>
-                    </li>
+                    <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a></li>
+                    <li><a href="http://www.schabell.org/2015/02/into-clouds-with-jboss-bpm-travel-agency.html" style="color: red" target="_blank">bpmPaaS Travel Agency in the Cloud</a></li>
                 </ul>
             </ul>
         </section>
