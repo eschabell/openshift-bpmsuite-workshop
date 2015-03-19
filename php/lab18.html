@@ -43,10 +43,250 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-                    <h3>Lab 18 - Extending rewards process</h3>
-                    <h5>(coming soon...)</h5>
+                    <h3>Lab 18 - Automated task reassignment</h3>
 				</section>
 
+                <section data-background-color="white">
+                    <div style="width: 1056px; height: 180px;">
+                        <h2>Lab Goal</h2>
+                        <h4>To automate task such that when claimed, if user does not complete in specified time, reassign back to group for another user to process.</h4>
+                    </div>
+                    <div style="width: 1056px; height: 500px;">
+                        <img src="images/brms_bpms_workshop/bpmsuite-component-processdesigner.png">
+                    </div>
+                </section>
+
+                <section data-background-color="white">
+                    <h2>Approve Rewards problem</h2>
+                    The process has been running for awhile but we notice that when our task is created, it is assigned to the manager role. This group can then
+                    claim the task and work on it hopefully completing it in a timely fashion. One problem that has come up is that when a task is claimed and the
+                    manager then become sick (or does not come to work for some other reason), the task then sits unattended for as long as that manager is out of
+                    her office.
+                    <div style="float: right">
+                        <img src="images/brms_bpms_workshop/rewards-process.png">
+                    </div>
+                </section>
+
+                <section data-background-color="white">
+                    <h2>Approve Rewards fix</h2>
+                    To fix this issue, we can setup our Approve Rewards task to auto-reassign a claimed task if not completed within a time we specify. The
+                    reassignment would be to put it back into the Manager group for another manager to claim and complete.
+                    <div style="float: right">
+                        <img src="images/brms_bpms_workshop/rewards-process.png">
+                    </div>
+                </section>
+
+                <section>
+                    <h2>User task reassignment</h2>
+                    <ul>
+                        <li>In project authoring we open rewards process</li>
+                        <ul>
+                            <li><code>AUTHORING -> PROJECT AUTHORING -> rewards-approval</code></li>
+                        </ul>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image314.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>User task reassignment</h2>
+                    <ul>
+                        <li>Select (click) <code>Approve Reward</code> user task and slide out <code>Properties</code> panel</li>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image315.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <div style="width: 1056px; height: 180px;">
+                        <h2>User task reassignment</h2>
+                        <ul>
+                            <li>In <code>Properties</code> panel under section <code>Extra Properties</code></li>
+                            <li>Select <code>Reassignment</code> field to open <code>Editor for reassignments</code></li>
+                        </ul>
+                    </div>
+                    <div style="width: 1056px; height: 400px;">
+                        <img src="images/brms_bpms_workshop/image316.png" />
+                        <img src="images/brms_bpms_workshop/image317.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>User task reassignment</h2>
+                    <ul>
+                        <li>Click on <code>Add Reassignment</code> for a new entry</li>
+                        <li>Fill in all fields as shown to have any task claimed by <code>ERICS</code> returned to
+                            the manager group if not completed within 1 minute. (could be 1d, 1w, etc)</li>
+                        <li>Click on <code>OK</code> button to close reassignment editor</li>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image318.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>User task reassignment</h2>
+                    <ul>
+                        <li>Save the process and add commit message as shown</li>
+                        <li>Now it is time to test reassignment of a claimed task back into the group after 1 minute</li>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image319.png" />
+                            <img src="images/brms_bpms_workshop/image320.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Build and deploy the rewards project</li>
+                        <li><code>Project Authoring -> Tools -> Project Editor</code></li>
+                        <img src="images/brms_bpms_workshop/image284.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>click on <i>Build & Deploy</i> button in top right corner</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image285.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Click on <i>No</i> in Information popup to just build and deploy</li>
+                        <li>Watch for the green popup bar stating that the build was successful</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image286.png">
+                    <img src="images/brms_bpms_workshop/image287.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Now we can examine our deployed process definition</li>
+                        <li><code>Project Authoring -> Process Mangement -> Process Definitions</code></li>
+                        <img src="images/brms_bpms_workshop/image150.png">
+                        <li>To view our definition details, click on the magnifying glass icon under <i>Actions</i></li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image288.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>An overview of the various process definition details is given in this view</li>
+                        <li>You can start a process instance from here by clicking the <i>New Instance</i> button</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image289.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>We can also start a process instance from the <i>Process Definition</i> view by clicking the start-icon under <i>Actions</i></li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image288.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Either way, we get a popup start process form that we designed previously</li>
+                        <li>We fill in the rewards submission details and click on the arrow at the bottom</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image290.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Watch for the yellow popup bar stating <i>Process instance started</i></li>
+                        <li>We are then presented with the process instance view, notice progression to <i>Approve Reward</i> task</li>
+                        <li>Note your <code>Instance ID</code> may differ from ours</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image291.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Open the task list to view waiting user tasks</i></li>
+                        <li><code>Project Authoring -> Tasks -> Tasks List</code></li>
+                        <img src="images/brms_bpms_workshop/image292.png">
+                        <li>Our task is in the <i>Active</i> and <i>Group</i> lists until claimed</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image293.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Click on open lock icon to claim the task, a yellow popup bar confirms claim</li>
+                        <li>We are presented with the details of our task</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image294.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Note the task is now listed in <code>Active</code> and <code>Personal</code> tabs</li>
+                        <li>It is no longer in the <code>Group</code> tab, meaning not available to all Managers anymore</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image294.png">
+                </section>
+
+                <section>
+                    <h2>Test task reassignment</h2>
+                    <ul>
+                        <li>Wait 1 minute and then click <code>refresh</code> button on the <code>Task List</code></li>
+                        <li>The task you owned is not in your <code>Personal</code> list, but back into the <code>Group</code></li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image321.png">
+                    <img src="images/brms_bpms_workshop/image322.png">
+                </section>
+
+                <section>
+                    <h2>Rewards process project</h2>
+                    <h5>(next up, more task updates needed so we add automated email notifications for tasks taking too long...)</h5>
+                </section>
+
+                <section>
+                    <img src="images/jteimages/image42.png">
+                </section>
+
+                <section>
+                    <div align="center">
+                        <img height="150" width="99%" src="images/references.jpg">
+                    </div>
+                    <ul>
+                        <li>JBoss BRMS & BPM Suite Articles</li>
+                        <ul>
+                            <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
+                            <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
+                        </ul>
+                        <li>JBoss BPM Suite Demos</li>
+                        <ul>
+                            <li><a href="http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html" style="color: red" target="_blank">Travel Agency Demo</a></li>
+                            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a></li>
+                            <li><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-helping-travelers-with-lost-bags.html" style="color: red" target="_blank">Baggage Delivery Demo</a></li>
+                        </ul>
+                        <li>JBoss bpmPaaS Demos</li>
+                        <ul>
+                            <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a></li>
+                            <li><a href="http://www.schabell.org/2015/02/into-clouds-with-jboss-bpm-travel-agency.html" style="color: red" target="_blank">bpmPaaS Travel Agency in the Cloud</a></li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>JBoss BPM Suite Workshop</h2>
+                    <h3><a href="lab19.html" style="color: red" target="_blank">Lab 19 - Automated email task notifications</a></h3>
+                </section>
             </div>
 		</div>
 
