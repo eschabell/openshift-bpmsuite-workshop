@@ -44,8 +44,315 @@
 			<div class="slides">
 				<section>
                     <h3>Lab 19 - Automated email task notifications</h3>
-                    <h5>(coming soon...)</h5>
 				</section>
+
+                <section data-background-color="white">
+                    <div style="width: 1056px; height: 180px;">
+                        <h2>Lab Goal</h2>
+                        <h4>To set an automated email notification for a task so that if a new task is not claimed within two minutes, an e-mail notification is sent to the group.</h4>
+                    </div>
+                    <div style="width: 1056px; height: 500px;">
+                        <img src="images/brms_bpms_workshop/bpmsuite-component-processdesigner.png">
+                    </div>
+                </section>
+
+                <section data-background-color="white">
+                    <h2>Approve Rewards Task</h2>
+                    <h3>still has issues...</h3>
+                    In the <a href="lab18.html" style="color: red" target="_blank">previous lab</a> we discovered a problem with our tasks when claimed by
+                    a user from the group, but then did not complete the task in a timely manner. We setup automated task reassignment for this, but now
+                    we have another issue. New tasks are arriving for the group to process, but without a notification no one in the group is aware of
+                    waiting tasks.
+                    <div style="float: right">
+                        <img src="images/brms_bpms_workshop/rewards-process.png">
+                    </div>
+                </section>
+
+                <section data-background-color="white">
+                    <h2>Approve Rewards fix</h2>
+                    To fix this new issue, we can setup automatic e-mail task notifications for the group. Every time a new Approve Rewards task
+                    arrives, someone from the group will have two minutes to claim the task or an e-mail notification will be sent.
+                    <div style="float: right">
+                        <img src="images/brms_bpms_workshop/rewards-process.png">
+                    </div>
+                </section>
+
+                <section>
+                    <h2>User task notification</h2>
+                    <ul>
+                        <li>In project authoring we open rewards process</li>
+                        <ul>
+                            <li><code>AUTHORING -> PROJECT AUTHORING -> rewards-approval</code></li>
+                        </ul>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image314.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>User task notification</h2>
+                    <ul>
+                        <li>Select (click) <code>Approve Reward</code> user task and slide out <code>Properties</code> panel</li>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image315.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <div style="width: 1056px; height: 180px;">
+                        <h2>User task notification</h2>
+                        <ul>
+                            <li>In <code>Properties</code> panel under section <code>Extra Properties</code></li>
+                            <li>Select <code>Notifications</code> field to open <code>Editor for Notifications</code></li>
+                        </ul>
+                    </div>
+                    <div style="width: 1156px; height: 300px;">
+                        <img src="images/brms_bpms_workshop/image324.png" />
+                        <img src="images/brms_bpms_workshop/image325.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>User task notification</h2>
+                    <ul>
+                        <li>Click on <code>Add Notification</code> for a new entry:</li>
+                        <ul>
+                            <li><code>Type: not-started</code></li>
+                            <li><code>Expires At: 2m</code></li>
+                            <li><code>From: Administrator</code></li>
+                            <li><code>To Users: erics</code></li>
+                            <li><code>To Groups: manager</code></li>
+                        </ul>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image323.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>User task notification</h2>
+                    <ul>
+                        <li>Complete the notification fields:</li>
+                        <ul>
+                            <li><code>Reply To: [leave empty]</code></li>
+                            <li><code>Subject: Task needs attention</code></li>
+                            <li><code>Body: [Enter body message shown below]</code></li>
+                        </ul>
+                        <li>Click on <code>OK</code> button to close editor</li>
+                        <div style="width: 1156px; height: 300px;">
+                            <img src="images/brms_bpms_workshop/image326.png" />
+                            <img src="images/brms_bpms_workshop/image323.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>User task notification</h2>
+                    <ul>
+                        <li>Save the process and add commit message as shown</li>
+                        <li>Now it is time to test our email task notification deadline of 2 minutes for unclaimed tasks</li>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image327.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <div style="width: 1056px; height: 400px;">
+                        <h2>Intermezzo</h2>
+                        <h3>Configuration for e-mail</h3>
+                        If you followed this workshop from the start, you have installed using
+                        the <a href="https://github.com/jbossdemocentral/bpms-install-demo" style="color: red" target="_blank">brms-install-demo</a> project,
+                        this provides all the JBoss BPM Suite configuration changes needed to process e-mail notifications. For
+                        exact details see the following article:
+                    </div>
+                    <div style="width: 1056px; height: 500px;">
+                       <b><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-quick-guide-automating-email-notificatons-part1.html" style="color: red" target="_blank">Automating Email User Task Notifications (part 1)</a></b>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Build and deploy the rewards project</li>
+                        <li><code>Project Authoring -> Tools -> Project Editor</code></li>
+                        <img src="images/brms_bpms_workshop/image284.png">
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>click on <i>Build & Deploy</i> button in top right corner</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image285.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Click on <i>No</i> in Information popup to just build and deploy</li>
+                        <li>Watch for the green popup bar stating that the build was successful</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image286.png">
+                    <img src="images/brms_bpms_workshop/image287.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Now we can examine our deployed process definition</li>
+                        <li><code>Project Authoring -> Process Mangement -> Process Definitions</code></li>
+                        <img src="images/brms_bpms_workshop/image150.png">
+                        <li>To view our definition details, click on the magnifying glass icon under <i>Actions</i></li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image288.png">
+                </section>
+
+                <section>
+                    <div style="width: 1056px; height: 450px;">
+                        <h2>Intermezzo</h2>
+                        <h3>Running e-mail server</h3>
+                        Before starting a process instance and waiting for the notification to trigger an e-mail, we will need
+                        an e-mail server running to monitor the incoming port 25 for SMTP (e-mail) traffic. We have provided
+                        a <a href="https://nilhcem.github.io/FakeSMTP/" style="color: red" target="_blank">fakeSMTP application</a> in
+                        the <a href="https://github.com/jbossdemocentral/bpms-install-demo" style="color: red" target="_blank">brms-install-demo</a> project's
+                        support directory, you can start this as admin user (here as unix admin user) to catch incoming
+                        mail:
+                    </div>
+                    <div style="width: 1056px; height: 100px;">
+                        <code>$ sudo java -jar support/fakeSMTP.jar</code>
+                    </div>
+                </section>
+
+                <section>
+                    <div style="width: 1056px; height: 300px;">
+                        <h2>Intermezzo</h2>
+                        <h3>fakeSMTP e-mail server</h3>
+                        The pop-up window shown just needs you to click on the <code>START SERVER</code> button, after
+                        which we can monitor this for incoming e-mail task notification from our process.
+                    </div>
+                    <div style="width: 1056px; height: 350px;">
+                        <img src="images/brms_bpms_workshop/image328.png">
+                        <img src="images/brms_bpms_workshop/image329.png">
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Now back to the overview of our process definition details</li>
+                        <li>You can start a process instance from here by clicking the <i>New Instance</i> button</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image289.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>We can also start a process instance from the <i>Process Definition</i> view by clicking the start-icon under <i>Actions</i></li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image288.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Either way, we get a popup start process form that we designed previously</li>
+                        <li>We fill in the rewards submission details and click on the arrow at the bottom</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image290.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Watch for the yellow popup bar stating <i>Process instance started</i></li>
+                        <li>We are then presented with the process instance view, notice progression to <i>Approve Reward</i> task</li>
+                        <li>Note your <code>Instance ID</code> may differ from ours</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image291.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Open the task list to view waiting user tasks</i></li>
+                        <li><code>Project Authoring -> Tasks -> Tasks List</code></li>
+                        <img src="images/brms_bpms_workshop/image292.png">
+                        <li>Our task is in the <i>Active</i> and <i>Group</i> lists until claimed</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image293.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>If we leave this task in the group and wait 2 minutes</li>
+                        <li>We should see two sets of e-mails generated, 1 for user erics, 1 for group manager</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image330.png">
+                </section>
+
+                <section>
+                    <h2>Test task notification</h2>
+                    <ul>
+                        <li>Part of the BPMN specification is that this notification is sent only once, so won't happen again</li>
+                        <li>Our task is still in the <i>Active</i> and <i>Group</i> lists until claimed</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image293.png">
+                </section>
+
+                <section>
+                    <h2>Notification or</h2>
+                    <h2>Reassignment</h2>
+                    <ul>
+                        <li>Also note, once you trigger an e-mail notification, automated task reassignment is not available</li>
+                        <li>There is either an e-mail notification, or you can claim a task that can be reassigned back to the group, not both</li>
+                        <li>We can now claim the task by clicking on <code>lock icon</code>, work on it by clicking on <code>check icon</code> and complete task form</li>
+                    </ul>
+                    <img src="images/brms_bpms_workshop/image321.png">
+                </section>
+
+                <section>
+                    <h2>Rewards process project</h2>
+                    <h5>(more coming soon...)</h5>
+                </section>
+
+                <section>
+                    <img src="images/jteimages/image42.png">
+                </section>
+
+                <section>
+                    <div align="center">
+                        <img height="150" width="99%" src="images/references.jpg">
+                    </div>
+                    <ul>
+                        <li>JBoss BRMS & BPM Suite Articles</li>
+                        <ul>
+                            <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
+                            <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
+                        </ul>
+                        <li>JBoss BPM Suite Demos</li>
+                        <ul>
+                            <li><a href="http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html" style="color: red" target="_blank">Travel Agency Demo</a></li>
+                            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a></li>
+                            <li><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-helping-travelers-with-lost-bags.html" style="color: red" target="_blank">Baggage Delivery Demo</a></li>
+                        </ul>
+                        <li>JBoss bpmPaaS Demos</li>
+                        <ul>
+                            <li><a href="http://www.schabell.org/2014/05/redhat-openshift-bpmPaaS-genericloan-demo.html" style="color: red" target="_blank">bpmPaaS Generic Loan Process in the Cloud</a></li>
+                            <li><a href="http://www.schabell.org/2015/02/into-clouds-with-jboss-bpm-travel-agency.html" style="color: red" target="_blank">bpmPaaS Travel Agency in the Cloud</a></li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>JBoss BPM Suite Workshop</h2>
+                    <h3><a href="lab20.html" style="color: red" target="_blank">Lab 20 - Rewards process project (more coming soon...)</a></h3>
+                </section>
 
             </div>
 		</div>
